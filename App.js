@@ -15,13 +15,24 @@ import reactDom from "react-dom/client";
 // );
 
 //Create the same element using JSX
-const div = (
-  <div className="title">
-    <h1>Heading One</h1>
-    <h2>Heading 2</h2>
-    <h3>Heading Three</h3>
-  </div>
-);
+// const div = (
+//   <div className="title">
+//     <h1>Heading One</h1>
+//     <h2>Heading 2</h2>
+//     <h3>Heading Three</h3>
+//   </div>
+// );
+
+//Create a functional component of the same with JSX
+function Div() {
+  return (
+    <div className="title">
+      <h1>Heading One</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading Three</h3>
+    </div>
+  );
+}
 
 const root = reactDom.createRoot(document.getElementById("root"));
-root.render(div);
+root.render(<Div />);
