@@ -1,11 +1,30 @@
 import React from "react";
-import react from "react";
-import reactDom from "react-dom/client";
-
+import ReactDOM from "react-dom/client";
 //Create a Nested header Element using React.createElement(h1,h2,h3 inside a div with class “title”)
-// const h1 = React.createElement("h1", {}, "Heading One");
-// const h2 = React.createElement("h2", {}, "Heading 2");
-// const h3 = React.createElement("h3", {}, "Heading Three");
+// const h1 = React.createElement(
+//   "h1",
+//   {
+//     id: "h1",
+//     key: "h1key",
+//   },
+//   "Heading Oneee"
+// );
+
+// console.log(h1);
+// const h2 = React.createElement(
+//   "h2",
+//   {
+//     key: "h2key",
+//   },
+//   "Heading 2"
+// );
+// const h3 = React.createElement(
+//   "h3",
+//   {
+//     key: "h3key",
+//   },
+//   "Heading Three"
+// );
 // const div = React.createElement(
 //   "div",
 //   {
@@ -24,15 +43,27 @@ import reactDom from "react-dom/client";
 // );
 
 //Create a functional component of the same with JSX
-function Div() {
+// const Header= ()=> {
+//   return (
+//     <div className="title">
+//       <h1>Heading One</h1>
+//       <h2>Heading 2</h2>
+//       <h3>Heading Three</h3>
+//     </div>
+//   );
+// }
+
+const h1class = "green";
+//Pass attributes into the tag in JSX
+const Header = () => {
   return (
-    <div className="title">
-      <h1>Heading One</h1>
+    <div>
+      <h1 className={h1class}>functional component h11</h1>
       <h2>Heading 2</h2>
       <h3>Heading Three</h3>
     </div>
   );
-}
+};
 
-const root = reactDom.createRoot(document.getElementById("root"));
-root.render(<Div />);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Header />);
