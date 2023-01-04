@@ -53,14 +53,29 @@ import ReactDOM from "react-dom/client";
 //   );
 // }
 
-const h1class = "green";
+// const h1class = "green";
 //Pass attributes into the tag in JSX
+// const Header = () => {
+//   return (
+//     <div>
+//       <h1 className={h1class}>functional component h11</h1>
+//       <h2>Heading 2</h2>
+//       <h3>Heading Three</h3>
+//     </div>
+//   );
+// };
+
+// component composition(Add one component inside other)
+
+const Title = () => {
+  return <h1>Title</h1>;
+};
+
 const Header = () => {
   return (
     <div>
-      <h1 className={h1class}>functional component h11</h1>
-      <h2>Heading 2</h2>
-      <h3>Heading Three</h3>
+      <Title /> {/*component Title inside Header component*/}
+      <h2>heading 2</h2>
     </div>
   );
 };
