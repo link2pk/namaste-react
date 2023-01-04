@@ -66,19 +66,19 @@ import ReactDOM from "react-dom/client";
 // };
 
 // component composition(Add one component inside other)
-
+const mainheading = "Title";
 const Title = () => {
-  return <h1>Title</h1>;
+  return <h1>{mainheading}</h1>;
 };
 
 const Header = () => {
   return (
     <div>
       <Title /> {/*component Title inside Header component*/}
-      <h2>heading 2</h2>
+      <h2>heading two</h2>
     </div>
   );
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Header />);
+root.render(<Header></Header>);
