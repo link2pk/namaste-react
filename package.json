@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/link2pk/namaste-react#readme",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.2",
     "parcel": "^2.8.2",
     "process": "^0.11.10"
   },
