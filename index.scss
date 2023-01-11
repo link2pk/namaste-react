@@ -16,6 +16,9 @@
 
     >section {
         flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
     }
 }
 
@@ -59,4 +62,9 @@ img {
 .card {
     min-width: 100px;
     max-width: 200px;
+    box-shadow: 0 1px 4px rgba(#000000, .2);
+
+    >section {
+        padding: 10px;
+    }
 }
