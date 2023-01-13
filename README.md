@@ -1,4 +1,15 @@
 
+# Assignment - chapter 05
+
+What is the difference between Named Export, Default export and * as export?
+
+What is the importance of config.js file
+
+What are React Hooks?
+
+Why do we need a useState Hook?
+
+
 # Assignment - theory
 
 Is JSX mandatory for React?
@@ -30,7 +41,7 @@ What is <React.Fragment></React.Fragment> and <></> ?
 What is Virtual DOM?
 
     The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation.
-    
+
 What is Reconciliation in React?
 What is React Fiber?
 
