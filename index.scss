@@ -3,7 +3,9 @@
     padding: 0;
 }
 
-:root {}
+:root {
+    --shimmer-bg: lightgrey;
+}
 
 .root {
     >* {
@@ -78,4 +80,31 @@ img {
 
 .restaurants-search {
     margin-bottom: 10px;
+}
+
+.shimmer-cards {
+    .card {
+        min-height: 326px;
+        width: 200px;
+    }
+
+    .restaurants-search {
+        width: 150px;
+        background-color: var(--shimmer-bg);
+        height: 21px;
+
+
+    }
+
+    .shimmer-img {
+        height: 126px;
+        background-color: var(--shimmer-bg);
+    }
+
+    h3 {
+        height: 44px;
+        background-color: grey;
+    }
+
+
 }

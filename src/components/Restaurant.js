@@ -17,9 +17,12 @@ const Restaurant = ({ restaurant }) => {
         <h3>{name}</h3>
         <p className="cuisines">{cuisines.join(", ")}</p>
         <div style={{ display: "flex", gap: "10px" }}>
-          <span style={{ backgroundColor: "lightgreen", padding: " 0 4px" }}>
-            * {avgRating}
-          </span>
+          {avgRating === "--" ? null : (
+            <span style={{ backgroundColor: "lightgreen", padding: " 0 4px" }}>
+              * {avgRating}
+            </span>
+          )}
+
           <span>{slaString}</span>
         </div>
         <p>{aggregatedDiscountInfo?.shortDescriptionList[0]?.meta}</p>
