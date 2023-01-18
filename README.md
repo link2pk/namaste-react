@@ -1,5 +1,23 @@
+# Assignment - Chapter 07 - Finding the Path
+What are various ways to add images into our App? Explain with code examples
+What would happen if we do console.log(useState())?
+How will useEffect behave if we don't add a dependency array ?
+What is SPA?
+What is difference between Client Side Routing and Server Side Routing?
 
 
+# Assignment - Chapter 06 - Exploring the world
+What is a Microservice?
+What is Monolith architecture?
+What is the difference between Monolith and Microservice?
+Why do we need a useEffect Hook?
+What is Optional Chaining?
+What is Shimmer UI?
+What is the difference between JS expression and JS statement
+What is Conditional Rendering, explain with a code example
+What is CORS?
+What is async and await?
+What is the use of `const json = await data.json();` in getRestaurants()
 
 # Assignment - chapter 05
 

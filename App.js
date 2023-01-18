@@ -3,6 +3,11 @@ import ReactDOM from "react-dom/client";
 import Header from "./src/components/Header";
 import Footer from "./src/components/Footer";
 import Body from "./src/components/Body";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Contact from "./src/components/Contact";
+import About from "./src/components/About";
+import Error from "./src/components/Error";
+import RestaurantDetails from "./src/components/RestaurantDetails";
 
 /*
 Header => Logo, nav items, cart etc.
@@ -18,11 +23,37 @@ const AppComponent = () => {
   return (
     <>
       <Header />
-      <Body />
+      <Outlet />
       <Footer />
     </>
   );
 };
 
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppComponent />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/restaurant/:menuId",
+        element: <RestaurantDetails />,
+      },
+    ],
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppComponent />);
+root.render(<RouterProvider router={appRouter} />);

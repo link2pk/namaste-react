@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Logo from "../assets/img/logo.jpeg";
+import { Link } from "react-router-dom";
 
 const loggedIn = () => {
   //api call for authentication
@@ -7,12 +9,9 @@ const loggedIn = () => {
 
 const Title = () => {
   return (
-    <a href="/" className="logo-a">
-      <img
-        src="https://yt3.ggpht.com/ytc/AMLnZu_EC-ECXAxRAixWGEfMsE1rdSoetBHyxmLNdtCB=s900-c-k-c0x00ffffff-no-rj"
-        alt="logo"
-      />
-    </a>
+    <Link to={"/"} className="logo-a">
+      <img src={Logo} alt="logo" />
+    </Link>
   );
 };
 
@@ -23,10 +22,18 @@ const Header = () => {
     <header className="main-header">
       <Title />
       <ul className="main-nav">
-        <li>Home</li>
-        <li>About Us</li>
-        <li>Contact</li>
-        <li>Cart</li>
+        <li>
+          <Link to={"/"}>Home</Link>
+        </li>
+        <li>
+          <Link to={"/about"}>About Us</Link>
+        </li>
+        <li>
+          <Link to={"/contact"}>Contact</Link>
+        </li>
+        <li>
+          <Link to={"/cart"}>Cart</Link>
+        </li>
       </ul>
       {isLoggedIn ? (
         <button

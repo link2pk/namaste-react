@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import NoRestaurant from "./NoRestaurant";
 import Restaurant from "./Restaurant";
 import Shimmer from "./Shimmer";
@@ -57,7 +58,9 @@ const Body = () => {
           <NoRestaurant />
         ) : (
           restaurantCards.map((obj) => (
-            <Restaurant restaurant={obj.data} key={obj.data.id} />
+            <Link to={"/restaurant/" + obj.data.id} key={obj.data.id}>
+              <Restaurant restaurant={obj.data} />
+            </Link>
           ))
         )}
       </section>
