@@ -38,7 +38,7 @@ const Header = () => {
       {isLoggedIn ? (
         <button
           onClick={() => {
-            setIsLoggedIn(false);
+            // setIsLoggedIn(false);
           }}
         >
           logout
@@ -46,7 +46,7 @@ const Header = () => {
       ) : (
         <button
           onClick={() => {
-            setIsLoggedIn(true);
+            //  setIsLoggedIn(true);
           }}
         >
           login
