@@ -28,7 +28,7 @@ const Body = () => {
   return allRestaurant?.length === 0 ? (
     <Shimmer />
   ) : (
-    <main>
+    <>
       <section className="restaurants-search">
         <input
           type="text"
@@ -64,7 +64,7 @@ const Body = () => {
           ))
         )}
       </section>
-    </main>
+    </>
   );
 };
 

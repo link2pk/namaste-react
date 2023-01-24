@@ -8,6 +8,7 @@ import Contact from "./src/components/Contact";
 import About from "./src/components/About";
 import Error from "./src/components/Error";
 import RestaurantDetails from "./src/components/RestaurantDetails";
+import Profile from "./src/components/Profile";
 
 /*
 Header => Logo, nav items, cart etc.
@@ -23,7 +24,9 @@ const AppComponent = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </>
   );
@@ -46,6 +49,12 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+        children: [
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: "/restaurant/:menuId",
