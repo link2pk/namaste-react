@@ -1,5 +1,6 @@
-import ProfileC from "./ProfileClass";
+// import ProfileC from "./ProfileClass";
 import React, { Component } from "react";
+import Profile from "./Profile";
 
 class About extends Component {
   constructor(props) {
@@ -30,8 +31,9 @@ class About extends Component {
         >
           update parent count
         </button>
-        <ProfileC name={"akshay"} xyz="zyx" />
+        {/* <ProfileC name={"akshay"} xyz="zyx" /> */}
         {/* <ProfileC name={"khanna"} /> */}
+        <Profile />
       </>
     );
   }

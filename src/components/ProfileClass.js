@@ -11,23 +11,17 @@ class ProfileC extends Component {
     const { name } = this.props;
     console.log("child constructor : " + name);
   }
-  async componentDidMount() {
-    console.log(
-      "child component did mount before api call : " + this.props.name
-    );
-    const data = await fetch("https://api.github.com/users/link2pk");
-    const json = await data.json();
-    this.setState({
-      userInfo: json,
-    });
-    console.log(
-      "child component did mount after api call : " + this.props.name
-    );
-    // const { login } = this.state.userInfo;
-    // console.log(this.state.userInfo);
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      console.log("timer");
+    }, 500);
   }
   componentDidUpdate() {
     console.log("child component did update : " + this.props.name);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    console.log("unmount called");
   }
   render() {
     const { avatar_url } = this.state.userInfo;
