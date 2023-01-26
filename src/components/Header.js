@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Logo from "../assets/img/logo.jpeg";
 import { Link } from "react-router-dom";
+import useIsOnline from "../utils/useIsOnline";
 
 const loggedIn = () => {
   //api call for authentication
@@ -17,7 +18,7 @@ const Title = () => {
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(loggedIn());
-
+  const isOnline = useIsOnline();
   return (
     <header className="main-header">
       <Title />
@@ -35,6 +36,7 @@ const Header = () => {
           <Link to={"/cart"}>Cart</Link>
         </li>
       </ul>
+      <div>{isOnline ? "🟢" : "⚪"}</div>
       {isLoggedIn ? (
         <button
           onClick={() => {

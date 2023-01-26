@@ -1,15 +1,16 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./src/components/Header";
-import Footer from "./src/components/Footer";
-import Body from "./src/components/Body";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Body from "./components/Body";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Contact from "./src/components/Contact";
-import About from "./src/components/About";
-import Error from "./src/components/Error";
-import RestaurantDetails from "./src/components/RestaurantDetails";
-import Profile from "./src/components/Profile";
+import Contact from "./components/Contact";
+// import About from "./components/About";
+import Error from "./components/Error";
+import RestaurantDetails from "./components/RestaurantDetails";
+import Profile from "./components/Profile";
 
+const About = lazy(() => import("./components/About"));
 /*
 Header => Logo, nav items, cart etc.
 Body => Search Restaurant
@@ -48,7 +49,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<div>Loading About Us...</div>}>
+            <About />
+          </Suspense>
+        ),
         children: [
           {
             path: "profile",

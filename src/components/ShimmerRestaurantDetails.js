@@ -12,8 +12,8 @@ const ShimmerRestaurantDetails = () => {
         <ul>
           {Array(10)
             .fill("")
-            .map(() => {
-              return <li></li>;
+            .map((e, index) => {
+              return <li key={index}></li>;
             })}
         </ul>
       </section>

@@ -1,25 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IMG_CDN_URL } from "../../config";
+import { IMG_CDN_URL } from "../config";
+import useRestaurantData from "../utils/useRestaurantData";
 import ShimmerRestaurantDetails from "./ShimmerRestaurantDetails";
 
 const RestaurantDetails = () => {
   const { menuId } = useParams();
-  const [restaurantData, setRestaurantData] = useState([]);
+
+  const restaurantData = useRestaurantData(menuId);
   const { cloudinaryImageId, name, cuisines, area } = restaurantData;
-
-  useEffect(() => {
-    getRestaurantDetails();
-  }, []);
-
-  async function getRestaurantDetails() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/v4/full?lat=28.447326834373634&lng=76.9707901775837&menuId=" +
-        menuId
-    );
-    const json = await data.json();
-    setRestaurantData(json?.data);
-  }
 
   return restaurantData?.length === 0 ? (
     <ShimmerRestaurantDetails />
@@ -33,16 +22,16 @@ const RestaurantDetails = () => {
         />
         <section>
           <h2>{name}</h2>
-          <p>{cuisines.join(", ")}</p>
+          <p>{cuisines?.join(", ")}</p>
           <p>{area}</p>
         </section>
       </section>
       <section className="restaurant-menu">
         <ul>
           {Object.values(restaurantData?.menu?.items).map((item) => {
-            const { name, price, cloudinaryImageId } = item;
+            const { name, price, cloudinaryImageId, id } = item;
             return (
-              <li>
+              <li key={id}>
                 <section>
                   <p>{name}</p>
                   <b>₹ {price.toString().slice(0, -2)}</b>
