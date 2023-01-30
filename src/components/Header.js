@@ -24,7 +24,7 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(loggedIn());
   const isOnline = useIsOnline();
   return (
-    <header className="py-3 sm:py-0  grid gap-2 sm:grid-cols-[6rem_1fr_6rem] justify-items-center sm:items-center bg-header-bg ">
+    <header className="py-3 sm:py-0  grid gap-2 sm:grid-cols-[6rem_1fr_6rem] justify-items-center sm:items-center bg-header-bg shadow">
       <Title />
       <ul className="flex gap-3">
         <li>
