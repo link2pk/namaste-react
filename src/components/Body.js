@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import useRestaurants from "../utils/useRestaurants";
 import NoRestaurant from "./NoRestaurant";
@@ -14,9 +14,10 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <section className="restaurants-search">
+      <section className="text-center">
         <input
           type="text"
+          className="rounded-l-sm py-1 border-primary-brown "
           placeholder="Search for restaurants"
           value={searchText}
           onChange={(e) => {
@@ -25,7 +26,7 @@ const Body = () => {
         />
 
         <button
-          className="btn btn-search"
+          className="text-white  bg-primary-brown border border-primary-brown  px-2  py-1 rounded-r-sm  "
           onClick={() => {
             const filteredRestaurants = allRestaurant.filter((obj) =>
               obj?.data?.name
@@ -38,12 +39,16 @@ const Body = () => {
           Search
         </button>
       </section>
-      <section className="restaurants">
-        {restaurantCards.length === 0 ? (
+      <section className="flex flex-wrap justify-center">
+        {restaurantCards?.length === 0 ? (
           <NoRestaurant />
         ) : (
-          restaurantCards.map((obj) => (
-            <Link to={"/restaurant/" + obj.data.id} key={obj.data.id}>
+          restaurantCards?.map((obj) => (
+            <Link
+              to={"/restaurant/" + obj.data.id}
+              key={obj.data.id}
+              className=" inline-block shadow m-2"
+            >
               <Restaurant restaurant={obj.data} />
             </Link>
           ))

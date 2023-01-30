@@ -23,8 +23,11 @@
   "homepage": "https://github.com/link2pk/namaste-react#readme",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.2",
+    "@tailwindcss/forms": "^0.5.3",
     "parcel": "^2.8.2",
-    "process": "^0.11.10"
+    "postcss": "^8.4.21",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.2.4"
   },
   "dependencies": {
     "formik": "^2.2.9",

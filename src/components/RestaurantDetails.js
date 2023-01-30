@@ -14,36 +14,39 @@ const RestaurantDetails = () => {
     <ShimmerRestaurantDetails />
   ) : (
     <>
-      <section className="restaurant-details">
+      <section className="flex  bg-primary-brown text-white">
         <img
-          className="restaurant-img"
+          className="max-w-[200px]"
           src={IMG_CDN_URL + cloudinaryImageId}
           alt={name + " logo"}
         />
-        <section>
+        <section className="p-2">
           <h2>{name}</h2>
           <p>{cuisines?.join(", ")}</p>
           <p>{area}</p>
         </section>
       </section>
-      <section className="restaurant-menu">
+      <section className="py-2">
         <ul>
           {Object.values(restaurantData?.menu?.items).map((item) => {
             const { name, price, cloudinaryImageId, id } = item;
             return (
-              <li key={id}>
+              <li
+                key={id}
+                className="max-w-xs mx-auto flex justify-between py-2"
+              >
                 <section>
                   <p>{name}</p>
                   <b>₹ {price.toString().slice(0, -2)}</b>
                 </section>
                 {cloudinaryImageId ? (
                   <img
-                    className="item-img"
+                    className="max-w-[200px] max-h-12"
                     src={IMG_CDN_URL + cloudinaryImageId}
                     alt={name + " image"}
                   />
                 ) : (
-                  <div className="item-img-placeholder"></div>
+                  <div className="w-[77px] h-12 bg-slate-300 before:content-['No Preview Available'] before:text-xs"></div>
                 )}
               </li>
             );

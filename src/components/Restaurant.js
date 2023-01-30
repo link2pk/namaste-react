@@ -11,12 +11,13 @@ const Restaurant = ({ restaurant }) => {
   } = { ...restaurant };
   const imgurl = IMG_CDN_URL + `${cloudinaryImageId}`;
   return (
-    <article className="card">
+    <article className=" w-56 ">
       <img src={imgurl} alt="restaurant image" />
-      <section>
-        <h3>{name}</h3>
-        <p className="cuisines">{cuisines.join(", ")}</p>
-        <div style={{ display: "flex", gap: "10px" }}>
+      <section className="p-2  ">
+        <h3 className="font-semibold">{name}</h3>
+        <p>{cuisines.join(", ")}</p>
+
+        <div className="flex gap-2">
           {avgRating === "--" ? null : (
             <span style={{ backgroundColor: "lightgreen", padding: " 0 4px" }}>
               * {avgRating}

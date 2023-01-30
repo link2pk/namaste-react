@@ -11,7 +11,9 @@ const Error = () => {
         {status} Page {statusText}
       </h3>
       <p>Sorry! No page found for {pathname}</p>
-      <Link to={"/"}>go to homepage</Link>
+      <Link className="text-blue-600 hover:underline" to={"/"}>
+        Go to homepage ⏎
+      </Link>
     </>
   );
 };
