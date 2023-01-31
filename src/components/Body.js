@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useRestaurants from "../utils/useRestaurants";
 import NoRestaurant from "./NoRestaurant";
 import Restaurant from "./Restaurant";
 import Shimmer from "./Shimmer";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [restaurantCards, setRestaurantCards] = useState([]);
   const allRestaurant = useRestaurants(restaurantCards, setRestaurantCards);
+
+  const { user, setUser } = useContext(UserContext);
 
   return allRestaurant?.length === 0 ? (
     <Shimmer />
@@ -24,7 +27,6 @@ const Body = () => {
             setSearchText(e.target.value);
           }}
         />
-
         <button
           className="text-white  bg-primary-brown border border-primary-brown  px-2  py-1 rounded-r-sm  "
           onClick={() => {
@@ -38,6 +40,14 @@ const Body = () => {
         >
           Search
         </button>
+        <span className="px-2"> Set user</span>
+        <input
+          type="text"
+          value={user.name}
+          onChange={(e) => {
+            setUser({ ...user, name: e.target.value });
+          }}
+        />
       </section>
       <section className="flex flex-wrap justify-center">
         {restaurantCards?.length === 0 ? (

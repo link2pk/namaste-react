@@ -1,3 +1,12 @@
+# Assignment - Chapter 11 - Data is the new Oil
+    
+Theory:
+What is prop drilling?
+What is lifting the state up?
+What is Context Provider and Context Consumer?
+If you don’t pass a value to the provider does it take the default value?
+    No
+
 # Assignment - Chapter 07 - Finding the Path
 What are various ways to add images into our App? Explain with code examples
 What would happen if we do console.log(useState())?

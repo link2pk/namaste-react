@@ -1,6 +1,7 @@
 // import ProfileC from "./ProfileClass";
 import React, { Component } from "react";
 import Profile from "./Profile";
+import UserContext from "../utils/UserContext";
 
 class About extends Component {
   constructor(props) {
@@ -21,7 +22,8 @@ class About extends Component {
     return (
       <>
         <div>about class component</div>
-        {this.state.parentcount}
+        <UserContext.Consumer>{({ user }) => user.name}</UserContext.Consumer>
+        <p>{this.state.parentcount}</p>
         <button
           onClick={() => {
             this.setState({
