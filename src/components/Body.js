@@ -47,7 +47,7 @@ const Body = () => {
             <Link
               to={"/restaurant/" + obj.data.id}
               key={obj.data.id}
-              className=" inline-block shadow m-2"
+              className=" inline-block shadow m-2 hover:shadow-lg"
             >
               <Restaurant restaurant={obj.data} />
             </Link>
