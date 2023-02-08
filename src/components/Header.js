@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Logo from "../assets/img/logo.jpeg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useIsOnline from "../utils/useIsOnline";
 import UserContext from "../utils/UserContext";
 
@@ -31,24 +31,33 @@ const Header = () => {
       <Title />
       <ul className="flex gap-3">
         <li>
-          <Link className="hover:underline" to={"/"}>
+          <NavLink className="hover:underline [&.active]:underline" to={"/"}>
             Home
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link className="hover:underline" to={"/about"}>
+          <NavLink
+            className="hover:underline  [&.active]:underline"
+            to={"/about"}
+          >
             About Us
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link className="hover:underline" to={"/contact"}>
+          <NavLink
+            className="hover:underline  [&.active]:underline"
+            to={"/contact"}
+          >
             Contact
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link className="hover:underline" to={"/cart"}>
+          <NavLink
+            className="hover:underline  [&.active]:underline"
+            to={"/cart"}
+          >
             Cart
-          </Link>
+          </NavLink>
         </li>
       </ul>
       <section className="sm:flex sm:justify-self-end gap-2 ">
