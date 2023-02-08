@@ -21,7 +21,6 @@
     "url": "https://github.com/link2pk/namaste-react/issues"
   },
   "homepage": "https://github.com/link2pk/namaste-react#readme",
-  "proxy": "https://www.swiggy.com/",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.2",
     "@tailwindcss/forms": "^0.5.3",
