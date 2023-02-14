@@ -1,3 +1,15 @@
+# Assignment 12 - Let's Build our Store
+
+Theory:
+    useContext vs Redux.
+    Advantage of using Redux Toolkit over Redux.
+    Explain Dispatcher.
+    Explain Reducer.
+    Explain slice.
+    Explain selector.
+    Explain createSlice and the configuration it takes.
+  
+    
 # Assignment - Chapter 11 - Data is the new Oil
     
 Theory:
