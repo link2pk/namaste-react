@@ -8,7 +8,9 @@ Theory:
     Explain slice.
     Explain selector.
     Explain createSlice and the configuration it takes.
-  
+    
+    ![image](https://user-images.githubusercontent.com/12784319/218875926-d6edc880-0b75-43aa-8c95-53fae9a28668.png)
+
     
 # Assignment - Chapter 11 - Data is the new Oil
     
