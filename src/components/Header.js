@@ -3,6 +3,7 @@ import Logo from "../assets/img/logo.jpeg";
 import { Link, NavLink } from "react-router-dom";
 import useIsOnline from "../utils/useIsOnline";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const loggedIn = () => {
   //api call for authentication
@@ -26,8 +27,11 @@ const Header = () => {
   const isOnline = useIsOnline();
 
   const { user } = useContext(UserContext);
+
+  const cartItems = useSelector((store) => store.cart.items);
+
   return (
-    <header className="py-3 sm:py-0  grid gap-2 sm:grid-cols-[1fr_18rem_1fr] justify-items-center sm:items-center bg-header-bg shadow">
+    <header className="py-3 sm:py-0  grid gap-2 sm:grid-cols-[1fr_20rem_1fr] justify-items-center sm:items-center bg-header-bg shadow">
       <Title />
       <ul className="flex gap-3">
         <li>
@@ -56,7 +60,7 @@ const Header = () => {
             className="hover:underline  [&.active]:underline"
             to={"/cart"}
           >
-            Cart
+            Cart {cartItems.length} item(s)
           </NavLink>
         </li>
       </ul>

@@ -3,13 +3,19 @@ import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "../config";
 import useRestaurantData from "../utils/useRestaurantData";
 import ShimmerRestaurantDetails from "./ShimmerRestaurantDetails";
-
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 const RestaurantDetails = () => {
   const { menuId } = useParams();
 
   const restaurantData = useRestaurantData(menuId);
   const { cloudinaryImageId, name, cuisines, area } = restaurantData;
 
+  const dispatch = useDispatch();
+
+  const addItemToCart = (item) => {
+    dispatch(addItem(item));
+  };
   return restaurantData?.length === 0 ? (
     <ShimmerRestaurantDetails />
   ) : (
@@ -33,15 +39,23 @@ const RestaurantDetails = () => {
             return (
               <li
                 key={id}
-                className="max-w-xs mx-auto flex justify-between py-2"
+                className=" border-b py-4 px-4 container max-w-xl  mx-auto grid grid-cols-[1fr_130px] gap-3 items-center hover:bg-primary-brown/5"
               >
                 <section>
-                  <p>{name}</p>
-                  <b>₹ {price.toString().slice(0, -2)}</b>
+                  <h4>{name}</h4>
+                  <div className="flex items-center gap-3">
+                    <b>₹ {price / 100}</b>
+                    <button
+                      className="border border-primary-brown text-xs px-1 rounded-sm ease-in duration-200 hover:bg-primary-brown hover:text-white"
+                      onClick={() => addItemToCart(item)}
+                    >
+                      + Add
+                    </button>
+                  </div>
                 </section>
                 {cloudinaryImageId ? (
                   <img
-                    className="max-w-[200px] max-h-12"
+                    className="max-w-[200px] max-h-20"
                     src={IMG_CDN_URL + cloudinaryImageId}
                     alt={name + " image"}
                   />

@@ -47,6 +47,7 @@ const Body = () => {
           onChange={(e) => {
             setUser({ ...user, name: e.target.value });
           }}
+          className="form-control"
         />
       </section>
       <section className="flex flex-wrap justify-center">

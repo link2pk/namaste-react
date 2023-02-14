@@ -11,6 +11,12 @@
   }
 
   @layer components {
+    .btn-primary {
+     @apply text-white bg-primary-brown border border-primary-brown px-2 py-1 rounded-sm;
+    }
+    .form-control {
+      @apply rounded-sm py-1 border-primary-brown ;
+    }
     .root {
       >* {
           padding: 10px;
