@@ -1,7 +1,9 @@
 const NoRestaurant = () => {
   return (
     <>
-      <p>No restaurant matched your search. Please try with different name.</p>
+      <p className="mt-4">
+        No restaurant matched your search. Please try with different name.
+      </p>
     </>
   );
 };

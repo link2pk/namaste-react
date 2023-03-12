@@ -1,23 +1,20 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import useRestaurants from "../utils/useRestaurants";
 import NoRestaurant from "./NoRestaurant";
 import Restaurant from "./Restaurant";
 import Shimmer from "./Shimmer";
-import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [restaurantCards, setRestaurantCards] = useState([]);
   const allRestaurant = useRestaurants(restaurantCards, setRestaurantCards);
 
-  const { user, setUser } = useContext(UserContext);
-
   return allRestaurant?.length === 0 ? (
     <Shimmer />
   ) : (
     <>
-      <section className="text-center">
+      <section className="text-center my-4">
         <input
           type="text"
           className="rounded-l-sm py-1 border-primary-brown "
@@ -25,6 +22,14 @@ const Body = () => {
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
+          }}
+          onKeyUp={() => {
+            const filteredRestaurants = allRestaurant.filter((obj) =>
+              obj?.data?.name
+                ?.toLowerCase()
+                ?.includes(searchText?.toLowerCase())
+            );
+            setRestaurantCards(filteredRestaurants);
           }}
         />
         <button
@@ -40,16 +45,8 @@ const Body = () => {
         >
           Search
         </button>
-        <span className="px-2"> Set user</span>
-        <input
-          type="text"
-          value={user.name}
-          onChange={(e) => {
-            setUser({ ...user, name: e.target.value });
-          }}
-          className="form-control"
-        />
       </section>
+
       <section className="flex flex-wrap justify-center">
         {restaurantCards?.length === 0 ? (
           <NoRestaurant />

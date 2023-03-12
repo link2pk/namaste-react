@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "../config";
 import useRestaurantData from "../utils/useRestaurantData";
@@ -16,6 +15,7 @@ const RestaurantDetails = () => {
   const addItemToCart = (item) => {
     dispatch(addItem(item));
   };
+
   return restaurantData?.length === 0 ? (
     <ShimmerRestaurantDetails />
   ) : (
@@ -60,7 +60,7 @@ const RestaurantDetails = () => {
                     alt={name + " image"}
                   />
                 ) : (
-                  <div className="w-[77px] h-12 bg-slate-300 before:content-['No Preview Available'] before:text-xs"></div>
+                  <div className="w-[127px] h-[80px] flex items-center justify-center bg-slate-100  before:text-xs before:content-['No_Preview_Available'] before:w-[80px] before:text-center before:text-gray-500"></div>
                 )}
               </li>
             );

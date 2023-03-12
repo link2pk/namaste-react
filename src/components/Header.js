@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const loggedIn = () => {
   //api call for authentication
-  return false;
+  return true;
 };
 
 const Title = () => {
@@ -66,7 +66,7 @@ const Header = () => {
       </ul>
       <section className="sm:flex sm:justify-self-end gap-2 ">
         <div className="text-center">{isOnline ? "🟢" : "⚪"}</div>
-        {isLoggedIn ? (
+        {/* {isLoggedIn ? (
           <button
             onClick={() => {
               // setIsLoggedIn(false);
@@ -82,7 +82,7 @@ const Header = () => {
           >
             Login
           </button>
-        )}
+        )} */}
         <span>{user.name}</span>
       </section>
     </header>

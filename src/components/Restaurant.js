@@ -1,6 +1,5 @@
 import { IMG_CDN_URL } from "../config";
 import { useContext } from "react";
-import UserContext from "../utils/UserContext";
 
 const Restaurant = ({ restaurant }) => {
   const {
@@ -11,8 +10,6 @@ const Restaurant = ({ restaurant }) => {
     slaString,
     aggregatedDiscountInfo,
   } = { ...restaurant };
-
-  const { user } = useContext(UserContext);
 
   return (
     <article className=" w-56 flex flex-col h-full">
@@ -37,7 +34,6 @@ const Restaurant = ({ restaurant }) => {
             </span>{" "}
             {aggregatedDiscountInfo?.shortDescriptionList[0]?.meta}
           </p>
-          <div>{user.name}</div>
         </div>
       </section>
     </article>

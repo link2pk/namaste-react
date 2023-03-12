@@ -15,7 +15,7 @@ const Cart = () => {
   };
   return (
     <ul className="container max-w-xl  mx-auto ">
-      <div className="text-center">
+      <div className="text-center my-4">
         <button className="btn-primary" onClick={() => emptyCart()}>
           clear cart
         </button>

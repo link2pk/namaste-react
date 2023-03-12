@@ -4,7 +4,7 @@ const Footer = () => {
   const { user } = useContext(UserContext);
   return (
     <footer className="text-center text-xs">
-      <h6>FoodVilla : &copy; Copyright 2023</h6> {user.name}
+      <h6>&copy; Copyright 2023 : FoodVilla made with ❤️ by {user.name} </h6>
     </footer>
   );
 };

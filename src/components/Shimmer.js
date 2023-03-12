@@ -1,19 +1,21 @@
 const Shimmer = () => {
   return (
-    <section className="shimmer-cards">
-      <section className="restaurants-search"></section>
-      <section className="restaurants">
+    <>
+      <section className="text-center h-[66px]"></section>
+      <section className="flex flex-wrap justify-center">
         {Array(10)
           .fill("")
           .map((e, index) => (
-            <article className="card" key={index}>
-              <div className="shimmer-img"></div>
-              <h3></h3>
-              <p></p>
-            </article>
+            <div key={index} className="inline-block shadow m-2 min-h-[273px]">
+              <article className=" w-56 flex flex-col h-full">
+                <div className="h-[126px] bg-shimmer-bg"></div>
+                <h3 className="h-[44px] bg-gray-400"></h3>
+                <p></p>
+              </article>
+            </div>
           ))}
       </section>
-    </section>
+    </>
   );
 };
 export default Shimmer;
