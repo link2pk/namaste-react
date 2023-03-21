@@ -1,5 +1,4 @@
 import { IMG_CDN_URL } from "../config";
-import { useContext } from "react";
 
 const Restaurant = ({ restaurant }) => {
   const {
