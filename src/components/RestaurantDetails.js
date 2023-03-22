@@ -4,6 +4,12 @@ import ShimmerRestaurantDetails from "./ShimmerRestaurantDetails";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 import Star from "../assets/img/star.svg";
+import StarBestseller from "../assets/img/star-bestseller.svg";
+import Veg from "../assets/img/veg.svg";
+import NonVeg from "../assets/img/non-veg.svg";
+
+import { useState } from "react";
+import { IMG_CDN_URL } from "../config";
 
 const RestaurantDetails = () => {
   const { menuId } = useParams();
@@ -23,7 +29,7 @@ const RestaurantDetails = () => {
       (obj) => obj.card.card.itemCards || obj.card.card.categories
     );
 
-  console.log(menu);
+  // console.log(restaurantData);
 
   const dispatch = useDispatch();
 
@@ -32,22 +38,70 @@ const RestaurantDetails = () => {
   };
 
   const ItemCard = ({ item }) => {
-    const { name } = item?.info;
+    const { name, isVeg, isBestseller, price, imageId } = item?.info;
     return (
       <>
-        <li>{name}</li>
+        <li className="grid grid-cols-[1fr_118px] gap-1  border-b pt-5">
+          <section>
+            <div className="flex items-center gap-1">
+              {isVeg ? (
+                <img src={Veg} alt="veg dish" className="w-[16px]" />
+              ) : (
+                <img src={NonVeg} alt="Non-veg dish" className="w-[16px]" />
+              )}
+              {isBestseller && (
+                <>
+                  <span className="ml-1">
+                    <img
+                      src={StarBestseller}
+                      alt="star icon"
+                      className="w-[14px]"
+                    />
+                  </span>
+                  <span className="text-xs font-bold text-[#ee9c00] relative top-[1px]">
+                    Bestseller
+                  </span>
+                </>
+              )}
+            </div>
+            <h6 className="font-normal text-gray-800 mt-1">{name}</h6>
+            <p className="text-sm font-normal text-gray-700">
+              {" "}
+              ₹ {price / 100}{" "}
+            </p>
+          </section>
+          <div className="text-center ">
+            <picture className="w-[118px] h-[96px] block">
+              <img
+                src={IMG_CDN_URL + ",w_208,h_208,c_fit/" + imageId}
+                alt={name}
+                className=" w-full h-full object-cover rounded-lg"
+              />
+            </picture>
+
+            <button className="text-[#60b246] text-xs font-bold  w-[100px] py-2 relative top-[-26px] bg-white border border-gray-300 rounded shadow">
+              ADD
+            </button>
+          </div>
+        </li>
       </>
     );
   };
 
   const CategoryList = ({ list }) => {
     const { title } = list;
+    const [isMenuOpen, setIsMenuOpen] = useState(true);
+
+    const toggleList = () => {
+      setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
       <>
-        <h4 className="font-bold">
-          {title} {list?.itemCards ? "(" + list?.itemCards?.length + ")" : ""}
+        <h4 className="font-bold cursor-pointer" onClick={toggleList}>
+          {title} {list?.itemCards ? "(" + list?.itemCards?.length + ") " : ""}
         </h4>
-        {list?.itemCards && (
+        {list?.itemCards && isMenuOpen && (
           <ul>
             {list?.itemCards.map((itemCard) => (
               <ItemCard item={itemCard?.card} key={itemCard?.card?.info?.id} />
@@ -96,43 +150,11 @@ const RestaurantDetails = () => {
             {feeDetails?.message}
           </p>
         </section>
-        {/* <div>{resInfo?.veg === true && "PURE VEG"}</div> */}
         <section className="py-2">
           {menu?.map((obj, index) => {
             const list = obj?.card?.card;
             return <CategoryList key={index} list={list} />;
           })}
-          {/* {Object.values(restaurantData[2]?.menu?.items).map((item) => {
-            const { name, price, cloudinaryImageId, id } = item;
-            return (
-              <li
-                key={id}
-                className=" border-b py-4 px-4 container max-w-xl  mx-auto grid grid-cols-[1fr_130px] gap-3 items-center hover:bg-primary-brown/5"
-              >
-                <section>
-                  <h4>{name}</h4>
-                  <div className="flex items-center gap-3">
-                    <b>₹ {price / 100}</b>
-                    <button
-                      className="border border-primary-brown text-xs px-1 rounded-sm ease-in duration-200 hover:bg-primary-brown hover:text-white"
-                      onClick={() => addItemToCart(item)}
-                    >
-                      + Add
-                    </button>
-                  </div>
-                </section>
-                {cloudinaryImageId ? (
-                  <img
-                    className="max-w-[200px] max-h-20"
-                    src={IMG_CDN_URL + cloudinaryImageId}
-                    alt={name + " image"}
-                  />
-                ) : (
-                  <div className="w-[127px] h-[80px] flex items-center justify-center bg-slate-100  before:text-xs before:content-['No_Preview_Available'] before:w-[80px] before:text-center before:text-gray-500"></div>
-                )}
-              </li>
-            );
-          })} */}
         </section>
       </div>
     </>

@@ -27,8 +27,8 @@ Footer => Copyright info etc.
 
 const AppComponent = () => {
   const [user, setUser] = useState({
-    name: "akshay",
-    email: "askay@namastedev.com",
+    name: "Username",
+    email: "user@testdev.com",
   });
   // console.log(user);
 

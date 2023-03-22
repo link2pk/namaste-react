@@ -1,7 +1,7 @@
 const ShimmerRestaurantDetails = () => {
   return (
     <>
-      <section className="flex h-[126px] bg-primary-brown"></section>
+      <section className=""></section>
       <section className="py-2">
         <ul>
           {Array(10)

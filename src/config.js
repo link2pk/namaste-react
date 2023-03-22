@@ -1,5 +1,5 @@
 export const IMG_CDN_URL =
-  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
+  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto";
 
 export const RESTAURANTS_URL =
   "https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.4484326&lng=76.9696888&page_type=DESKTOP_WEB_LISTING";

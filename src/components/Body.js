@@ -17,7 +17,7 @@ const Body = () => {
       <section className="text-center my-4">
         <input
           type="text"
-          className="rounded-l-sm py-1 border-primary-brown "
+          className="rounded-l-sm py-1 border-primary-brown min-w-[240px]"
           placeholder="Search for restaurants"
           value={searchText}
           onChange={(e) => {

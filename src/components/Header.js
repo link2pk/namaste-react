@@ -65,7 +65,13 @@ const Header = () => {
         </li>
       </ul>
       <section className="sm:flex sm:justify-self-end gap-2 ">
-        <div className="text-center">{isOnline ? "🟢" : "⚪"}</div>
+        <div className="text-center flex items-center">
+          {isOnline ? (
+            <span className="bg-[#92c353] w-[11px] h-[11px] rounded-full flex  justify-center  before:content-['✓'] before:relative before:top-[1px] before:text-white before:text-[7px] before:font-normal"></span>
+          ) : (
+            <span className="border border-gray-400 w-[11px] h-[11px] rounded-full flex justify-center  before:content-['✗'] before:text-gray-400 before:text-[7px] before:font-normal"></span>
+          )}
+        </div>
         {/* {isLoggedIn ? (
           <button
             onClick={() => {
