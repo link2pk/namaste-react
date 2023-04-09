@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Contact from "./components/Contact";
 // import About from "./components/About";
 import Error from "./components/Error";
-import RestaurantDetails from "./components/RestaurantDetails";
+// import RestaurantDetails from "./components/RestaurantDetails";
 import Profile from "./components/Profile";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
@@ -15,6 +15,7 @@ import store from "./utils/store";
 import Cart from "./components/Cart";
 
 const About = lazy(() => import("./components/About"));
+const RestaurantDetails = lazy(() => import("./components/RestaurantDetails"));
 /*
 Header => Logo, nav items, cart etc.
 Body => Search Restaurant
@@ -75,7 +76,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/restaurant/:menuId",
-        element: <RestaurantDetails />,
+        element: (
+          <Suspense fallback={<div>Loading RestaurantDetails...</div>}>
+            <RestaurantDetails />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
