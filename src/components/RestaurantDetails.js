@@ -38,7 +38,8 @@ const RestaurantDetails = () => {
   };
 
   const ItemCard = ({ item }) => {
-    const { name, isVeg, isBestseller, price, imageId } = item?.info;
+    const { name, isVeg, isBestseller, price, defaultPrice, imageId } =
+      item?.info;
     return (
       <>
         <li className="grid grid-cols-[1fr_118px] gap-1  border-b pt-5">
@@ -66,17 +67,18 @@ const RestaurantDetails = () => {
             </div>
             <h6 className="font-normal text-gray-800 mt-1">{name}</h6>
             <p className="text-sm font-normal text-gray-700">
-              {" "}
-              ₹ {price / 100}{" "}
+              ₹ {price ? price / 100 : defaultPrice / 100}
             </p>
           </section>
           <div className="text-center ">
             <picture className="w-[118px] h-[96px] block">
-              <img
-                src={IMG_CDN_URL + ",w_208,h_208,c_fit/" + imageId}
-                alt={name}
-                className=" w-full h-full object-cover rounded-lg"
-              />
+              {imageId && (
+                <img
+                  src={IMG_CDN_URL + ",w_208,h_208,c_fit/" + imageId}
+                  alt={name}
+                  className=" w-full h-full object-cover rounded-lg"
+                />
+              )}
             </picture>
 
             <button className="text-[#60b246] text-xs font-bold  w-[100px] py-2 relative top-[-26px] bg-white border border-gray-300 rounded shadow">
@@ -98,20 +100,40 @@ const RestaurantDetails = () => {
 
     return (
       <>
-        <h4 className="font-bold cursor-pointer" onClick={toggleList}>
-          {title} {list?.itemCards ? "(" + list?.itemCards?.length + ") " : ""}
-        </h4>
-        {list?.itemCards && isMenuOpen && (
-          <ul>
-            {list?.itemCards.map((itemCard) => (
-              <ItemCard item={itemCard?.card} key={itemCard?.card?.info?.id} />
-            ))}
-          </ul>
+        <section>
+          <h4
+            className="font-bold cursor-pointer text-gray-700 flex justify-between py-2"
+            onClick={toggleList}
+          >
+            {title} {list?.itemCards ? `(${list?.itemCards?.length})` : ""}
+            {list?.itemCards && <span>⌃</span>}
+          </h4>
+          {list?.itemCards && isMenuOpen && (
+            <ul>
+              {list?.itemCards.map((itemCard) => (
+                <ItemCard
+                  item={itemCard?.card}
+                  key={itemCard?.card?.info?.id}
+                />
+              ))}
+            </ul>
+          )}
+          {list?.itemCards && (
+            <hr className="border-t-0 border-b-[16px] border-gray-100" />
+          )}
+        </section>
+
+        {list?.categories && (
+          <section className="nested-category">
+            {list?.categories.map((listItem, index) => {
+              return (
+                <section>
+                  <CategoryList list={listItem} key={index} />{" "}
+                </section>
+              );
+            })}
+          </section>
         )}
-        {list?.categories &&
-          list?.categories.map((listItem, index) => {
-            return <CategoryList list={listItem} key={index} />;
-          })}
       </>
     );
   };
@@ -128,18 +150,16 @@ const RestaurantDetails = () => {
             <p className="text-xs text-gray-500">{areaName}</p>
           </section>
           <section>
-            <div className=" ">
-              <div className="flex gap-1">
-                <span>
-                  <img src={Star} alt="star icon" className="w-[16px]" />
-                </span>
-                <span className="text-green text-[14px] font-bold">
-                  {avgRating}
-                </span>
-              </div>
-
-              <p className="text-xs text-gray-500">{totalRatingsString}</p>
+            <div className="flex gap-1">
+              <span>
+                <img src={Star} alt="star icon" className="w-[16px]" />
+              </span>
+              <span className="text-green text-[14px] font-bold">
+                {avgRating}
+              </span>
             </div>
+
+            <p className="text-xs text-gray-500">{totalRatingsString}</p>
           </section>
           <p className="col-span-full text-[.8rem] text-gray-500 flex gap-1">
             <img

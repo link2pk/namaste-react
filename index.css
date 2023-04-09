@@ -351,16 +351,15 @@
       >* {
           padding: 10px;
       }
-  
       display: flex;
       flex-direction: column;
-      height: 100vh;
-  
+      height: 100vh; 
       >main {
           flex: 1;
-  
-  
       }
+    }
+    .nested-category section:not(:last-of-type) hr{
+      border-bottom-width: 1px;
     }
   }
 
