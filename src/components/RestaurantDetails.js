@@ -22,7 +22,7 @@ const RestaurantDetails = () => {
     dispatch(addItem(item));
   };
 
-  return restaurantData?.length ? (
+  return restaurantData?.length === 0 ? (
     <ShimmerRestaurantDetails />
   ) : (
     <>
