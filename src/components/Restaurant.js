@@ -23,6 +23,7 @@ const Restaurant = ({ restaurant }) => {
       <img
         src={IMG_CDN_URL + ",w_508,h_320,c_fill/" + cloudinaryImageId}
         alt={name + " image"}
+        className="min-h-[141px]"
       />
       <section className="p-2  flex-column">
         <h3 className="font-semibold mb-1 mt-3 leading-none text-gray-700">
