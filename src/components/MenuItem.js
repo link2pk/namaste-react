@@ -2,14 +2,16 @@ import StarBestseller from "../assets/img/star-bestseller.svg";
 import Veg from "../assets/img/veg.svg";
 import NonVeg from "../assets/img/non-veg.svg";
 import { IMG_CDN_URL } from "../config";
-const MenuItem = ({
-  name,
-  isVeg,
-  isBestseller,
-  price,
-  defaultPrice,
-  imageId,
-}) => {
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
+
+const MenuItem = ({ info }) => {
+  const { name, isVeg, isBestseller, price, defaultPrice, imageId } = info;
+  const dispatch = useDispatch();
+  const addItemToCart = (info) => {
+    dispatch(addItem(info));
+  };
+  // console.log(info);
   return (
     <>
       <li className="grid grid-cols-[1fr_118px] gap-1  border-b pt-5">
@@ -51,7 +53,12 @@ const MenuItem = ({
             )}
           </picture>
 
-          <button className="text-[#60b246] text-xs font-bold  w-[100px] py-2 relative top-[-26px] bg-white border border-gray-300 rounded shadow">
+          <button
+            className="text-[#60b246] text-xs font-bold  w-[100px] py-2 relative top-[-26px] bg-white border border-gray-300 rounded shadow"
+            onClick={() => {
+              addItemToCart(info);
+            }}
+          >
             ADD
           </button>
         </div>

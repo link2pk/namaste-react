@@ -29,6 +29,7 @@ const Header = () => {
   const { user } = useContext(UserContext);
 
   const cartItems = useSelector((store) => store.cart.items);
+  // console.log(cartItems);
 
   return (
     <header className="py-3 sm:py-0  grid gap-2 sm:grid-cols-[1fr_20rem_1fr] justify-items-center sm:items-center bg-header-bg shadow">
@@ -60,7 +61,7 @@ const Header = () => {
             className="hover:underline  [&.active]:underline"
             to={"/cart"}
           >
-            Cart {cartItems.length} item(s)
+            Cart {Object.values(cartItems).length} item(s)
           </NavLink>
         </li>
       </ul>

@@ -17,13 +17,17 @@ const MenuCategoryList = ({ list }) => {
           onClick={toggleList}
         >
           {title} {list?.itemCards ? `(${list?.itemCards?.length})` : ""}
-          {list?.itemCards && <span>⌃</span>}
+          {list?.itemCards && isMenuOpen ? (
+            <span>⌃</span>
+          ) : (
+            <span className="rotate-180">⌃</span>
+          )}
         </h4>
         {list?.itemCards && isMenuOpen && (
           <ul>
             {list?.itemCards.map((itemCard) => {
               const info = itemCard?.card?.info;
-              return <MenuItem {...info} key={info?.id} />;
+              return <MenuItem info={info} key={info?.id} />;
             })}
           </ul>
         )}
@@ -35,11 +39,7 @@ const MenuCategoryList = ({ list }) => {
       {list?.categories && (
         <section className="nested-category">
           {list?.categories.map((listItem, index) => {
-            return (
-              <section key={index}>
-                <MenuCategoryList list={listItem} />
-              </section>
-            );
+            return <MenuCategoryList key={index} list={listItem} />;
           })}
         </section>
       )}

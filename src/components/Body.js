@@ -10,6 +10,12 @@ const Body = () => {
   const [restaurantCards, setRestaurantCards] = useState([]);
   const allRestaurant = useRestaurants(restaurantCards, setRestaurantCards);
 
+  const searchFilter = (restaurants, searchText) => {
+    return restaurants.filter((obj) =>
+      obj?.data?.name?.toLowerCase()?.includes(searchText?.toLowerCase())
+    );
+  };
+
   return allRestaurant?.length === 0 ? (
     <Shimmer />
   ) : (
@@ -24,22 +30,14 @@ const Body = () => {
             setSearchText(e.target.value);
           }}
           onKeyUp={() => {
-            const filteredRestaurants = allRestaurant.filter((obj) =>
-              obj?.data?.name
-                ?.toLowerCase()
-                ?.includes(searchText?.toLowerCase())
-            );
+            const filteredRestaurants = searchFilter(allRestaurant, searchText);
             setRestaurantCards(filteredRestaurants);
           }}
         />
         <button
           className="text-white  bg-primary-brown border border-primary-brown  px-2  py-1 rounded-r-sm  "
           onClick={() => {
-            const filteredRestaurants = allRestaurant.filter((obj) =>
-              obj?.data?.name
-                ?.toLowerCase()
-                ?.includes(searchText?.toLowerCase())
-            );
+            const filteredRestaurants = searchFilter(allRestaurant, searchText);
             setRestaurantCards(filteredRestaurants);
           }}
         >

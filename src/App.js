@@ -31,11 +31,19 @@ const AppComponent = () => {
     name: "Username",
     email: "user@testdev.com",
   });
+  // const [vegOnly, setVegOnly] = useState(false);
   // console.log(user);
 
   return (
     <Provider store={store}>
-      <UserContext.Provider value={{ user: user, setUser: setUser }}>
+      <UserContext.Provider
+        value={{
+          user: user,
+          setUser: setUser,
+          // vegOnly: vegOnly,
+          // setVegOnly: setVegOnly,
+        }}
+      >
         <Header />
         <main>
           <Outlet />

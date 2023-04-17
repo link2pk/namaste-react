@@ -5,6 +5,7 @@ const UserContext = createContext({
     name: "dummy name",
     email: "dummyemail@dummy.com",
   },
+  // vegOnly: false,
 });
 
 export default UserContext;

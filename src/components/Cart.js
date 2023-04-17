@@ -2,17 +2,22 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { IMG_CDN_URL } from "../config";
 import { useDispatch } from "react-redux";
-import { clearCart, removeItem } from "../utils/cartSlice";
+import { addItem, clearCart, removeItem } from "../utils/cartSlice";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
+  // console.log(Object.values(cartItems));
   const dispatch = useDispatch();
-  const removeItemFromCart = (item) => {
-    dispatch(removeItem(item));
+  const removeItemFromCart = (id) => {
+    dispatch(removeItem(id));
   };
   const emptyCart = () => {
     dispatch(clearCart());
   };
+  const addQty = (cartItem) => {
+    dispatch(addItem(cartItem));
+  };
+
   return (
     <ul className="container max-w-xl  mx-auto ">
       <div className="text-center my-4">
@@ -20,34 +25,51 @@ const Cart = () => {
           clear cart
         </button>
       </div>
-      {cartItems.map(({ id, name, price, cloudinaryImageId }) => (
-        <li
-          key={id}
-          className=" border-b py-4 px-4 grid grid-cols-[1fr_130px] gap-3 items-center hover:bg-primary-brown/5"
-        >
-          <section>
-            <h4>{name}</h4>
-            <div className="flex items-center gap-3">
-              <b>₹ {price / 100}</b>
-              <button
-                className="border border-primary-brown text-xs px-1 rounded-sm ease-in duration-200 hover:bg-primary-brown hover:text-white"
-                onClick={() => removeItemFromCart(id)}
-              >
-                - Remove
-              </button>
-            </div>
-          </section>
-          {cloudinaryImageId ? (
-            <img
-              className="max-w-[200px] max-h-20"
-              src={IMG_CDN_URL + cloudinaryImageId}
-              alt={name + " image"}
-            />
-          ) : (
-            <div className="w-[122px] h-20 bg-slate-300 before:content-['No Preview Available'] before:text-xs"></div>
-          )}
-        </li>
-      ))}
+      {Object.values(cartItems).map((cartItem) => {
+        const { id, name, price, defaultPrice, imageId, qty } = cartItem;
+        // console.log(cartItem);
+        return (
+          <li
+            key={id}
+            className=" border-b py-4 px-4 grid grid-cols-[1fr_130px] gap-3 items-center hover:bg-primary-brown/5"
+          >
+            <section>
+              <h4>{name}</h4>
+              <div className="flex items-center gap-3">
+                <b>
+                  ₹ {price ? (price * qty) / 100 : (defaultPrice * qty) / 100}
+                </b>
+                <span className="border border-gray-200">
+                  <button
+                    className=" px-2  "
+                    onClick={() => removeItemFromCart(id)}
+                  >
+                    -
+                  </button>
+                  <span className="text-xs ">{qty}</span>
+                  <button
+                    className="px-2"
+                    onClick={() => {
+                      addQty(cartItem);
+                    }}
+                  >
+                    +
+                  </button>
+                </span>
+              </div>
+            </section>
+            {imageId ? (
+              <img
+                className="max-w-[200px] max-h-20"
+                src={IMG_CDN_URL + ",w_208,h_208,c_fit/" + imageId}
+                alt={name + " image"}
+              />
+            ) : (
+              <div className="w-[122px] h-20 bg-slate-300 before:content-['No Preview Available'] before:text-xs"></div>
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 };
