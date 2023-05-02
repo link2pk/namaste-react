@@ -8,8 +8,8 @@ const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
   // console.log(Object.values(cartItems));
   const dispatch = useDispatch();
-  const removeItemFromCart = (id) => {
-    dispatch(removeItem(id));
+  const removeItemFromCart = (cartItem) => {
+    dispatch(removeItem(cartItem));
   };
   const emptyCart = () => {
     dispatch(clearCart());
@@ -26,7 +26,7 @@ const Cart = () => {
         </button>
       </div>
       {Object.values(cartItems).map((cartItem) => {
-        const { id, name, price, defaultPrice, imageId, qty } = cartItem;
+        const { id, name, price, defaultPrice, imageId, quantity } = cartItem;
         // console.log(cartItem);
         return (
           <li
@@ -37,16 +37,19 @@ const Cart = () => {
               <h4>{name}</h4>
               <div className="flex items-center gap-3">
                 <b>
-                  ₹ {price ? (price * qty) / 100 : (defaultPrice * qty) / 100}
+                  ₹
+                  {price
+                    ? (price * quantity) / 100
+                    : (defaultPrice * quantity) / 100}
                 </b>
                 <span className="border border-gray-200">
                   <button
                     className=" px-2  "
-                    onClick={() => removeItemFromCart(id)}
+                    onClick={() => removeItemFromCart(cartItem)}
                   >
                     -
                   </button>
-                  <span className="text-xs ">{qty}</span>
+                  <span className="text-xs ">{quantity}</span>
                   <button
                     className="px-2"
                     onClick={() => {
