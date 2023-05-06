@@ -25,7 +25,10 @@ const RestaurantDetails = () => {
         <section className="py-2">
           {menu?.map((obj, index) => {
             const list = obj?.card?.card;
-            return <MenuCategoryList key={index} list={list} />;
+
+            return (
+              <MenuCategoryList key={index} list={list} resInfo={resInfo} />
+            );
           })}
         </section>
       </div>

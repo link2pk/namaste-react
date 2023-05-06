@@ -2,14 +2,17 @@ import StarBestseller from "../assets/img/star-bestseller.svg";
 import Veg from "../assets/img/veg.svg";
 import NonVeg from "../assets/img/non-veg.svg";
 import { IMG_CDN_URL } from "../config";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 
-const MenuItem = ({ info }) => {
+const MenuItem = ({ info, resInfo }) => {
   const { name, isVeg, isBestseller, price, defaultPrice, imageId } = info;
+  const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+
   const addItemToCart = (info) => {
-    dispatch(addItem(info));
+    // console.log(cartItems.length);
+    dispatch(addItem({ ...info, resId: resInfo?.id }));
   };
   // console.log(info);
   return (

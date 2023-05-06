@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MenuItem from "./MenuItem";
 
-const MenuCategoryList = ({ list }) => {
+const MenuCategoryList = ({ list, resInfo }) => {
   const { title } = list;
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
@@ -27,7 +27,7 @@ const MenuCategoryList = ({ list }) => {
           <ul>
             {list?.itemCards.map((itemCard) => {
               const info = itemCard?.card?.info;
-              return <MenuItem info={info} key={info?.id} />;
+              return <MenuItem info={info} key={info?.id} resInfo={resInfo} />;
             })}
           </ul>
         )}

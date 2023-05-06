@@ -10,7 +10,7 @@ const Restaurant = ({ restaurant }) => {
     aggregatedDiscountInfo,
     promoted,
     costForTwoString,
-  } = { ...restaurant };
+  } = restaurant;
 
   // console.log(restaurant);
   return (
