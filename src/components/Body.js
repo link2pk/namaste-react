@@ -33,6 +33,7 @@ const Body = () => {
             const filteredRestaurants = searchFilter(allRestaurant, searchText);
             setRestaurantCards(filteredRestaurants);
           }}
+          data-testid="search-input"
         />
         <button
           className="text-white  bg-primary-brown border border-primary-brown  px-2  py-1 rounded-r-sm  "
@@ -40,12 +41,16 @@ const Body = () => {
             const filteredRestaurants = searchFilter(allRestaurant, searchText);
             setRestaurantCards(filteredRestaurants);
           }}
+          data-testid="search-btn"
         >
           Search
         </button>
       </section>
 
-      <section className="flex flex-wrap justify-center">
+      <section
+        className="flex flex-wrap justify-center"
+        data-testid="restaurants"
+      >
         {restaurantCards?.length === 0 ? (
           <NoRestaurant />
         ) : (

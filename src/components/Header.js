@@ -15,6 +15,7 @@ const Title = () => {
     <Link to={"/"} className="w-24 h-20 block sm:justify-self-start">
       <img
         src={Logo}
+        data-testid="logo"
         alt="logo"
         className="object-cover w-full h-full mix-blend-darken "
       />
@@ -60,17 +61,24 @@ const Header = () => {
           <NavLink
             className="hover:underline  [&.active]:underline"
             to={"/cart"}
+            data-testid="cart"
           >
             Cart {Object.values(cartItems).length} item(s)
           </NavLink>
         </li>
       </ul>
       <section className="sm:flex sm:justify-self-end gap-2 ">
-        <div className="text-center flex items-center">
+        <div className="text-center flex items-center" data-testid="is-online">
           {isOnline ? (
-            <span className="bg-[#92c353] w-[11px] h-[11px] rounded-full flex  justify-center  before:content-['✓'] before:relative before:top-[1px] before:text-white before:text-[7px] before:font-normal"></span>
+            <span
+              className="bg-[#92c353] w-[11px] h-[11px] rounded-full flex  justify-center  before:content-[attr(data-status-content)] before:relative before:top-[1px] before:text-white before:text-[7px] before:font-normal"
+              data-status-content="✓"
+            ></span>
           ) : (
-            <span className="border border-gray-400 w-[11px] h-[11px] rounded-full flex justify-center  before:content-['✗'] before:text-gray-400 before:text-[7px] before:font-normal"></span>
+            <span
+              className="border border-gray-400 w-[11px] h-[11px] rounded-full flex justify-center  before:content-[attr(data-status-content)] before:text-gray-400 before:text-[7px] before:font-normal"
+              data-status-content="✗"
+            ></span>
           )}
         </div>
         {/* {isLoggedIn ? (
