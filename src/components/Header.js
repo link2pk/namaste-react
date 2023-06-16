@@ -33,7 +33,7 @@ const Header = () => {
   // console.log(cartItems);
 
   return (
-    <header className="py-3 sm:py-0  grid gap-2 sm:grid-cols-[1fr_20rem_1fr] justify-items-center sm:items-center bg-header-bg shadow">
+    <header className="py-3 sm:py-0  grid gap-2 sm:grid-cols-[7rem_auto_7rem] lg:grid-cols-[12rem_auto_12rem] justify-items-center sm:items-center bg-header-bg shadow">
       <Title />
       <ul className="flex gap-3">
         <li>
@@ -68,7 +68,10 @@ const Header = () => {
         </li>
       </ul>
       <section className="sm:flex sm:justify-self-end gap-2 ">
-        <div className="text-center flex items-center" data-testid="is-online">
+        <div
+          className="text-center flex items-center justify-center"
+          data-testid="is-online"
+        >
           {isOnline ? (
             <span
               className="bg-[#92c353] w-[11px] h-[11px] rounded-full flex  justify-center  before:content-[attr(data-status-content)] before:relative before:top-[1px] before:text-white before:text-[7px] before:font-normal"
